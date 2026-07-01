@@ -1,8 +1,9 @@
-package model.entity;
+package com.wit.TickHere.entity;
 
+import com.wit.TickHere.constant.EUserStatus;
 import jakarta.persistence.*;
 import lombok.*;
-import model.constant.Role;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name = "mst_user")
@@ -14,7 +15,7 @@ import model.constant.Role;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_user")
+    @Column(name = "user_id")
     private String id;
     @Column(name = "username", nullable = false, unique = true)
     private String username;
@@ -23,6 +24,10 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
     @ManyToOne
-    @JoinColumn(name = "id_role")
-    private Role roles;
+    @JoinColumn(name = "role_id")
+    private Role role;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    @ColumnDefault("'ACTIVE'")
+    private EUserStatus status = EUserStatus.ACTIVE;
 }

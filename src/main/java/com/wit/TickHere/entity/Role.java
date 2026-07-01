@@ -1,10 +1,11 @@
-package model.constant;
+package com.wit.TickHere.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import utils.constant.ERole;
+import com.wit.TickHere.constant.ERole;
 
 @Entity
+@Table(name = "Role")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -12,9 +13,9 @@ import utils.constant.ERole;
 @Builder
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_role")
-    private String id;
+    @Column(name = "role_id")
+    private Integer id;
     @Enumerated(EnumType.STRING)
+    @Column(name = "role")
     private ERole name;
 }

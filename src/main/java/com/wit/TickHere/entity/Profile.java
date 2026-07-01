@@ -1,4 +1,4 @@
-package model.entity;
+package com.wit.TickHere.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
